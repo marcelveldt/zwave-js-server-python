@@ -57,10 +57,14 @@ async def test_send_command_schema(
 
     # send command of current schema version should not fail
     with pytest.raises(NotConnected):
-        await client.async_send_command({"command": "test"}, require_schema=client.schema_version)
+        await client.async_send_command(
+            {"command": "test"}, require_schema=client.schema_version
+        )
     # send command of unsupported schema version should fail
     with pytest.raises(InvalidServerVersion):
-        await client.async_send_command({"command": "test"}, require_schema=client.schema_version + 2)
+        await client.async_send_command(
+            {"command": "test"}, require_schema=client.schema_version + 2
+        )
 
 
 async def test_min_schema_version(client_session, url, version_data):

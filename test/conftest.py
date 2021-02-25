@@ -75,7 +75,9 @@ def messages_fixture():
 
 
 @pytest.fixture(name="ws_client")
-async def ws_client_fixture(loop, version_data, ws_message, result, messages, set_api_schema_data):
+async def ws_client_fixture(
+    loop, version_data, ws_message, result, messages, set_api_schema_data
+):
     """Mock a websocket client.
 
     This fixture only allows a single message to be received.
